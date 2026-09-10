@@ -49,6 +49,25 @@ class AnalyzerTests(unittest.TestCase):
         self.assertEqual(source["rdap"]["network_name"], "Example")
         self.assertNotIn("198.51.100.7", json.dumps(payload))
 
+    def test_reads_current_cloudflare_security_export_fields(self):
+        record = {
+            "datetime": "2026-09-10T00:00:00Z",
+            "clientIP": "203.0.113.42",
+            "clientCountryName": "France",
+            "clientAsn": 211590,
+            "clientASNDescription": "Example hosting network",
+            "clientRequestHTTPHost": "example.test",
+            "clientRequestHTTPMethodName": "GET",
+            "clientRequestPath": "/.env?secret=removed",
+            "userAgent": "curl/8.0",
+            "action": "Block",
+        }
+        payload = analyze([record])
+        self.assertEqual(payload["summary"]["countries"]["FR"]["name"], "France")
+        self.assertEqual(payload["investigation"]["methods"], {"GET": 1})
+        self.assertEqual(payload["investigation"]["top_paths"], [{"path": "/.env", "requests": 1}])
+        self.assertNotIn("203.0.113.42", json.dumps(payload))
+
 
 if __name__ == "__main__":
     unittest.main()

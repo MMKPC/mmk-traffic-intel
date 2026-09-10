@@ -23,15 +23,15 @@ from urllib.parse import urlsplit
 FIELD_ALIASES = {
     "timestamp": ("EdgeStartTimestamp", "ClientRequestStartTimestamp", "timestamp", "time", "datetime"),
     "ip": ("ClientIP", "client_ip", "clientIP", "ip", "remote_addr", "origin_ip"),
-    "host": ("ClientRequestHost", "host", "hostname"),
-    "method": ("ClientRequestMethod", "method", "http_method"),
+    "host": ("ClientRequestHost", "clientRequestHTTPHost", "host", "hostname"),
+    "method": ("ClientRequestMethod", "clientRequestHTTPMethodName", "method", "http_method"),
     "uri": ("ClientRequestURI", "ClientRequestPath", "uri", "path", "request_uri"),
     "status": ("EdgeResponseStatus", "OriginResponseStatus", "status", "status_code"),
     "user_agent": ("ClientRequestUserAgent", "UserAgent", "user_agent", "userAgent", "agent"),
-    "referer": ("ClientRequestReferer", "referer", "referrer"),
-    "country": ("ClientCountry", "country", "country_code", "countryCode"),
+    "referer": ("ClientRequestReferer", "clientRefererHost", "referer", "referrer"),
+    "country": ("ClientCountry", "clientCountryName", "country", "country_code", "countryCode"),
     "city": ("ClientCity", "city"),
-    "asn": ("ClientASN", "asn", "asn_number", "autonomous_system_number"),
+    "asn": ("ClientASN", "clientAsn", "asn", "asn_number", "autonomous_system_number"),
     "asn_name": ("ClientASNDescription", "asn_name", "asn_org", "organization", "isp"),
     "rdns": ("ClientReverseDNS", "rdns", "hostname_reverse", "reverse_dns"),
     "action": ("SecurityAction", "action", "security_action"),
@@ -77,6 +77,8 @@ COUNTRY_NAMES = {
     "JP": "Japan",
     "AU": "Australia",
 }
+
+COUNTRY_CODES = {name.upper(): code for code, name in COUNTRY_NAMES.items()}
 
 
 def _first(record: Dict[str, Any], key: str, default: Any = None) -> Any:
@@ -126,8 +128,18 @@ def _normalize_path(value: Any) -> str:
 
 
 def _country_name(value: Any) -> str:
-    code = str(value or "ZZ").upper()
+    code = _country_code(value)
     return COUNTRY_NAMES.get(code, code)
+
+
+def _country_code(value: Any) -> str:
+    text = str(value or "").strip()
+    upper = text.upper()
+    if upper in COUNTRY_NAMES:
+        return upper
+    if upper in COUNTRY_CODES:
+        return COUNTRY_CODES[upper]
+    return upper[:3] if len(upper) <= 3 else "ZZ"
 
 
 def _is_ip(value: str) -> bool:
@@ -235,7 +247,7 @@ def _normalize_record(record: Dict[str, Any]) -> Dict[str, Any]:
         "status": status,
         "user_agent": str(_first(record, "user_agent", ""))[:512],
         "referer": str(_first(record, "referer", ""))[:512],
-        "country": str(_first(record, "country", "ZZ")).upper()[:3],
+        "country": _country_code(_first(record, "country", "ZZ")),
         "city": str(_first(record, "city", ""))[:128],
         "asn": asn,
         "asn_name": str(_first(record, "asn_name", ""))[:256],
