@@ -15,7 +15,15 @@ const PANEL_SIZE_LIMITS = {
     timelineMin: 110,
     timelineMax: 500
 };
-const BLOCKED_COUNTRIES = (window.APP_CONFIG && window.APP_CONFIG.BLOCKED_COUNTRIES)
+function renderSource(value, color = 'inherit') {
+    const text = String(value || '');
+    if (text.startsWith('source_')) {
+        return `<span style="color: ${color};">${text}</span>`;
+    }
+    return `<a href="https://ipinfo.io/${encodeURIComponent(text)}" target="_blank" style="color: ${color}; text-decoration: none;">${text}</a>`;
+}
+
+const BLOCKED_COUNTRIES = (window.APP_CONFIG && window.APP_CONFIG.BLOCKED_COUNTRIES) 
     ? window.APP_CONFIG.BLOCKED_COUNTRIES
     : ['RU', 'BY', 'KZ', 'BR', 'IN', 'CN', 'PH', 'ID', 'IR', 'KP', 'VN', 'NG'];
 
@@ -42,7 +50,8 @@ async function init() {
     }
 
     try {
-        const dataUrl = `data.json?v=${Date.now()}`;
+        const requestedData = new URLSearchParams(window.location.search).get('data');
+        const dataUrl = `${requestedData || 'public-demo.json'}?v=${Date.now()}`;
         const response = await fetch(dataUrl, { cache: 'no-store' });
         if (!response.ok) throw new Error("Fetch failed: " + response.status);
         const data = await response.json();
@@ -647,7 +656,7 @@ function renderIpDetailTable(ipList) {
             const seenRange = firstDate === lastDate ? firstDate : `${firstDate} → ${lastDate}`;
             return `<tr>
                 <td style="padding: 4px 6px; border-bottom: 1px solid rgba(255,255,255,0.03);">
-                    <a href="https://ipinfo.io/${ip.ip}" target="_blank" style="color: ${color}; text-decoration: none;">${ip.ip}</a>${blk}
+                    ${renderSource(ip.ip, color)}${blk}
                     ${ip.hostname ? '<div style="color: var(--text-secondary); font-size: 0.65rem;">' + ip.hostname + '</div>' : ''}
                     ${ip.city ? '<div style="color: var(--text-secondary); font-size: 0.65rem;">' + ip.city + '</div>' : ''}
                     <div style="color: var(--text-secondary); font-size: 0.65rem;">${asnLabel}</div>
@@ -832,7 +841,7 @@ function updateLogFeed() {
         tr.innerHTML = `
             <td>
                 <div style="font-weight: 600; color: ${color}">
-                    <a href="https://ipinfo.io/${s.origin_ip}" target="_blank" style="color: inherit; text-decoration: none;">${s.origin_ip}</a>
+                    ${renderSource(s.origin_ip)}
                     <span style="font-weight: 400; font-size: 0.7rem; opacity: 0.6; color: var(--text-primary)">[${s.geo.country_code || '??'}]</span>${blockedTag}
                 </div>
                 <div style="font-size: 0.7rem; color: var(--text-secondary)">${s.intent} | RPS: ${s.req_rate}</div>
@@ -999,7 +1008,7 @@ function renderPathIpDetailTable(path) {
             const seenRange = firstDate === lastDate ? firstDate : `${firstDate} → ${lastDate}`;
             return `<tr>
                 <td style="padding: 4px 6px; border-bottom: 1px solid rgba(255,255,255,0.03);">
-                    <a href="https://ipinfo.io/${ip.ip}" target="_blank" style="color: ${color}; text-decoration: none;">${ip.ip}</a>${blk}
+                    ${renderSource(ip.ip, color)}${blk}
                     ${ip.hostname ? '<div style="color: var(--text-secondary); font-size: 0.65rem;">' + escapeHtml(ip.hostname) + '</div>' : ''}
                     ${ip.city ? '<div style="color: var(--text-secondary); font-size: 0.65rem;">' + escapeHtml(ip.city) + '</div>' : ''}
                     <div style="color: var(--text-secondary); font-size: 0.65rem;">${asnLabel}</div>

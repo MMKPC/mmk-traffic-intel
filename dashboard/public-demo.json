@@ -1,0 +1,384 @@
+{
+  "sessions": [
+    {
+      "origin_ip": "source_a6433def0d59",
+      "edge_ip": "source_a6433def0d59",
+      "geo": {
+        "city": "",
+        "country": "United States",
+        "country_code": "US",
+        "hostname": "",
+        "asn": 64502,
+        "asn_name": "Example Residential ISP",
+        "is_bot": false,
+        "is_verified_bot": false,
+        "is_cloud": false,
+        "is_hosting": false,
+        "lat": null,
+        "lon": null
+      },
+      "first_seen": 1788998700.0,
+      "last_seen": 1788998700.0,
+      "intent": "Browser Traffic",
+      "tags": [],
+      "is_malicious": false,
+      "is_blocked": false,
+      "req_count": 1,
+      "req_rate": 1.0,
+      "is_spike": false,
+      "first_seen_iso": "2026-09-10T00:05:00+00:00",
+      "last_seen_iso": "2026-09-10T00:05:00+00:00",
+      "path_summary": [
+        "/contact"
+      ],
+      "user_agent": "Mozilla/5.0"
+    },
+    {
+      "origin_ip": "source_a6433def0d59",
+      "edge_ip": "source_a6433def0d59",
+      "geo": {
+        "city": "Exampletown",
+        "country": "United States",
+        "country_code": "US",
+        "hostname": "",
+        "asn": 64502,
+        "asn_name": "Example Residential ISP",
+        "is_bot": false,
+        "is_verified_bot": false,
+        "is_cloud": false,
+        "is_hosting": false,
+        "lat": null,
+        "lon": null
+      },
+      "first_seen": 1788998640.0,
+      "last_seen": 1788998640.0,
+      "intent": "Browser Traffic",
+      "tags": [],
+      "is_malicious": false,
+      "is_blocked": false,
+      "req_count": 1,
+      "req_rate": 1.0,
+      "is_spike": false,
+      "first_seen_iso": "2026-09-10T00:04:00+00:00",
+      "last_seen_iso": "2026-09-10T00:04:00+00:00",
+      "path_summary": [
+        "/portfolio"
+      ],
+      "user_agent": "Mozilla/5.0"
+    },
+    {
+      "origin_ip": "source_63d982065b3a",
+      "edge_ip": "source_63d982065b3a",
+      "geo": {
+        "city": "Example City",
+        "country": "Singapore",
+        "country_code": "SG",
+        "hostname": "",
+        "asn": 64501,
+        "asn_name": "Example Cloud Compute",
+        "is_bot": true,
+        "is_verified_bot": false,
+        "is_cloud": false,
+        "is_hosting": false,
+        "lat": null,
+        "lon": null
+      },
+      "first_seen": 1788998520.0,
+      "last_seen": 1788998580.0,
+      "intent": "Crawler or Bot",
+      "tags": [
+        "automated"
+      ],
+      "is_malicious": false,
+      "is_blocked": false,
+      "req_count": 2,
+      "req_rate": 0.033,
+      "is_spike": false,
+      "first_seen_iso": "2026-09-10T00:02:00+00:00",
+      "last_seen_iso": "2026-09-10T00:03:00+00:00",
+      "path_summary": [
+        "/robots.txt",
+        "/"
+      ],
+      "user_agent": "ExampleBot/1.0"
+    },
+    {
+      "origin_ip": "source_1363f8f27801",
+      "edge_ip": "source_1363f8f27801",
+      "geo": {
+        "city": "Exampleville",
+        "country": "France",
+        "country_code": "FR",
+        "hostname": "",
+        "asn": 64500,
+        "asn_name": "Example Hosting Network",
+        "is_bot": true,
+        "is_verified_bot": false,
+        "is_cloud": false,
+        "is_hosting": true,
+        "lat": null,
+        "lon": null
+      },
+      "first_seen": 1788998400.0,
+      "last_seen": 1788998460.0,
+      "intent": "Active Scanning",
+      "tags": [
+        "automated",
+        "edge-mitigated",
+        "hosting-network",
+        "scanner"
+      ],
+      "is_malicious": true,
+      "is_blocked": true,
+      "req_count": 3,
+      "req_rate": 0.05,
+      "is_spike": false,
+      "first_seen_iso": "2026-09-10T00:00:00+00:00",
+      "last_seen_iso": "2026-09-10T00:01:00+00:00",
+      "path_summary": [
+        "/.env",
+        "/wp-login.php",
+        "/"
+      ],
+      "user_agent": "curl/8.5.0"
+    }
+  ],
+  "summary": {
+    "countries": {
+      "FR": {
+        "legit": 0,
+        "bots": 1,
+        "malicious": 2,
+        "name": "France"
+      },
+      "SG": {
+        "legit": 0,
+        "bots": 2,
+        "malicious": 0,
+        "name": "Singapore"
+      },
+      "US": {
+        "legit": 2,
+        "bots": 0,
+        "malicious": 0,
+        "name": "United States"
+      }
+    },
+    "total_requests": 7,
+    "unique_origin_ips": 3,
+    "updated_at": "2026-09-10T04:37:28.617852+00:00"
+  },
+  "notable": [
+    {
+      "label": "ASN: AS64500 (Example Hosting Network) | Confidence: infrastructure metadata only | Actor: unknown",
+      "ips": [
+        "source_1363f8f27801"
+      ],
+      "count": 1
+    },
+    {
+      "label": "ASN: AS64501 (Example Cloud Compute) | Confidence: infrastructure metadata only | Actor: unknown",
+      "ips": [
+        "source_63d982065b3a"
+      ],
+      "count": 1
+    },
+    {
+      "label": "ASN: AS64502 (Example Residential ISP) | Confidence: infrastructure metadata only | Actor: unknown",
+      "ips": [
+        "source_a6433def0d59"
+      ],
+      "count": 1
+    }
+  ],
+  "investigation": {
+    "privacy": {
+      "ip_mode": "pseudonymized",
+      "query_strings_removed": true,
+      "request_bodies_discarded": true,
+      "public_safe": true
+    },
+    "timeline": [
+      {
+        "hour": "2026-09-10T00:00:00+00:00",
+        "total": 7,
+        "bots": 5,
+        "blocked": 3,
+        "malicious": 2,
+        "countries": {
+          "FR": 3,
+          "SG": 2,
+          "US": 2
+        }
+      }
+    ],
+    "top_paths": [
+      {
+        "path": "/",
+        "requests": 2
+      },
+      {
+        "path": "/.env",
+        "requests": 1
+      },
+      {
+        "path": "/wp-login.php",
+        "requests": 1
+      },
+      {
+        "path": "/robots.txt",
+        "requests": 1
+      },
+      {
+        "path": "/portfolio",
+        "requests": 1
+      },
+      {
+        "path": "/contact",
+        "requests": 1
+      }
+    ],
+    "methods": {
+      "GET": 7
+    },
+    "actions": {
+      "block": 3
+    },
+    "top_user_agents": [
+      {
+        "user_agent": "curl/8.5.0",
+        "requests": 3
+      },
+      {
+        "user_agent": "ExampleBot/1.0",
+        "requests": 2
+      },
+      {
+        "user_agent": "Mozilla/5.0",
+        "requests": 2
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "source_1363f8f27801",
+        "requests": 3,
+        "first_seen": "2026-09-10T00:00:00+00:00",
+        "last_seen": "2026-09-10T00:01:00+00:00",
+        "country": "FR",
+        "country_name": "France",
+        "city": "Exampleville",
+        "asn": 64500,
+        "asn_name": "Example Hosting Network",
+        "rdns": "",
+        "signals": {
+          "bot_requests": 3,
+          "hosting_requests": 3,
+          "malicious_path_requests": 2,
+          "edge_mitigated_requests": 3
+        },
+        "intents": {
+          "Active Scanning": 2,
+          "Edge Mitigated": 1
+        },
+        "top_paths": [
+          {
+            "path": "/.env",
+            "requests": 1
+          },
+          {
+            "path": "/wp-login.php",
+            "requests": 1
+          },
+          {
+            "path": "/",
+            "requests": 1
+          }
+        ],
+        "top_user_agents": [
+          {
+            "user_agent": "curl/8.5.0",
+            "requests": 3
+          }
+        ]
+      },
+      {
+        "source_id": "source_63d982065b3a",
+        "requests": 2,
+        "first_seen": "2026-09-10T00:02:00+00:00",
+        "last_seen": "2026-09-10T00:03:00+00:00",
+        "country": "SG",
+        "country_name": "Singapore",
+        "city": "Example City",
+        "asn": 64501,
+        "asn_name": "Example Cloud Compute",
+        "rdns": "",
+        "signals": {
+          "bot_requests": 2,
+          "hosting_requests": 0,
+          "malicious_path_requests": 0,
+          "edge_mitigated_requests": 0
+        },
+        "intents": {
+          "Crawler or Bot": 2
+        },
+        "top_paths": [
+          {
+            "path": "/robots.txt",
+            "requests": 1
+          },
+          {
+            "path": "/",
+            "requests": 1
+          }
+        ],
+        "top_user_agents": [
+          {
+            "user_agent": "ExampleBot/1.0",
+            "requests": 2
+          }
+        ]
+      },
+      {
+        "source_id": "source_a6433def0d59",
+        "requests": 2,
+        "first_seen": "2026-09-10T00:04:00+00:00",
+        "last_seen": "2026-09-10T00:05:00+00:00",
+        "country": "US",
+        "country_name": "United States",
+        "city": "Exampletown",
+        "asn": 64502,
+        "asn_name": "Example Residential ISP",
+        "rdns": "",
+        "signals": {
+          "bot_requests": 0,
+          "hosting_requests": 0,
+          "malicious_path_requests": 0,
+          "edge_mitigated_requests": 0
+        },
+        "intents": {
+          "Browser Traffic": 2
+        },
+        "top_paths": [
+          {
+            "path": "/portfolio",
+            "requests": 1
+          },
+          {
+            "path": "/contact",
+            "requests": 1
+          }
+        ],
+        "top_user_agents": [
+          {
+            "user_agent": "Mozilla/5.0",
+            "requests": 2
+          }
+        ]
+      }
+    ],
+    "limits": {
+      "identity_claim": "not supported",
+      "geolocation": "network metadata only"
+    }
+  }
+}

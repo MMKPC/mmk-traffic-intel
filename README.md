@@ -38,8 +38,8 @@ python -m mmk_traffic_intel.cli fixtures/cloudflare.sample.ndjson `
 python -m http.server 8788 --directory dashboard
 ```
 
-Open `http://localhost:8788` to view the dashboard. The dashboard is derived
-from Logalytics and is included with attribution in
+Open `http://localhost:8788` to view the synthetic public demo. The dashboard
+is derived from Logalytics and is included with attribution in
 `THIRD_PARTY_NOTICES.md`.
 
 For a real Cloudflare export, keep the result private and pseudonymized:
@@ -50,6 +50,13 @@ python -m mmk_traffic_intel.cli "C:\path\to\cloudflare-export.ndjson" `
   --output reports/private/mmkprospects.data.json `
   --pretty-report reports/private/mmkprospects.txt
 ```
+
+To view a private generated payload locally, copy it into the dashboard folder
+and use an explicit query parameter, for example:
+
+`http://localhost:8788/?data=mmkprospects.data.json`
+
+The default dashboard path always loads `public-demo.json`.
 
 `--keep-ip` exists only for a local investigation. It marks the generated
 payload as not public-safe and should never be used for a repository fixture.
