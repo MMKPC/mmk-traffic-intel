@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mmk-traffic-intel"
+version = "0.1.0"
+description = "Local-first web traffic classification and infrastructure intelligence"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [{ name = "MMKPC" }]
+dependencies = []
+
+[project.scripts]
+mmk-traffic-intel = "mmk_traffic_intel.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

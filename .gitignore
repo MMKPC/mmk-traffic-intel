@@ -1,0 +1,24 @@
+# Local analysis data
+data/
+reports/private/
+reports/*.json
+reports/*.txt
+.cache/
+*.local.json
+*.local.ndjson
+*.local.csv
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Dashboard runtime output is generated from fixtures or local exports.
+dashboard/data.json

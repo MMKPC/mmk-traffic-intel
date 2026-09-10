@@ -1,0 +1,83 @@
+{
+  "sessions": [
+    {
+      "origin_ip": "203.0.113.42",
+      "edge_ip": "203.0.113.42",
+      "geo": {
+        "city": "Frankfurt am Main",
+        "country": "Germany",
+        "country_code": "DE",
+        "hostname": "example.host.com",
+        "asn": 24940,
+        "asn_name": "Hetzner Online GmbH",
+        "is_bot": false,
+        "is_verified_bot": false,
+        "is_cloud": false,
+        "is_hosting": true,
+        "lat": 50.1109,
+        "lon": 8.6821
+      },
+      "first_seen": 1711800000.0,
+      "last_seen": 1711800060.0,
+      "intent": "Passive Traffic",
+      "tags": ["crawler"],
+      "is_malicious": false,
+      "req_count": 15,
+      "req_rate": 0.25,
+      "is_spike": false,
+      "first_seen_iso": "2025-03-30T12:00:00",
+      "last_seen_iso": "2025-03-30T12:01:00",
+      "path_summary": ["/", "/robots.txt"]
+    },
+    {
+      "origin_ip": "198.51.100.7",
+      "edge_ip": "198.51.100.7",
+      "geo": {
+        "city": "Ashburn",
+        "country": "United States",
+        "country_code": "US",
+        "hostname": "",
+        "asn": 14618,
+        "asn_name": "Amazon.com, Inc.",
+        "is_bot": false,
+        "is_verified_bot": false,
+        "is_cloud": true,
+        "is_hosting": false,
+        "lat": 39.0438,
+        "lon": -77.4874
+      },
+      "first_seen": 1711800120.0,
+      "last_seen": 1711800180.0,
+      "intent": "Active Scanning",
+      "tags": [],
+      "is_malicious": true,
+      "req_count": 42,
+      "req_rate": 7.0,
+      "is_spike": true,
+      "first_seen_iso": "2025-03-30T12:02:00",
+      "last_seen_iso": "2025-03-30T12:03:00",
+      "path_summary": ["/wp-admin/setup-config.php", "/.env", "/.git/config"]
+    }
+  ],
+  "notable": [
+    {
+      "label": "ASN: AS14618 (Amazon.com, Inc.) | Confidence: hosting provider only | Actor: unknown",
+      "ips": ["198.51.100.7"],
+      "count": 1
+    },
+    {
+      "label": "RDNS: example.host.com (unverified) | Actor: unknown",
+      "ips": ["203.0.113.42"],
+      "count": 1
+    }
+  ],
+  "summary": {
+    "total_requests": 57,
+    "unique_origin_ips": 2,
+    "updated_at": "2025-03-30T12:05:00",
+    "countries": {
+      "DE": { "legit": 0, "bots": 0, "malicious": 15, "name": "Germany" },
+      "US": { "legit": 0, "bots": 0, "malicious": 42, "name": "United States" }
+    }
+  }
+}
